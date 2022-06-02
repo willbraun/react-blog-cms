@@ -1,13 +1,13 @@
 import AddPostForm from './AddPostForm';
 import SidebarPost from './SidebarPost';
 
-const Sidebar = ({data, selectPost}) => {
-
-    const postList = data.map((post, i) => <SidebarPost selectPost={selectPost} key={i} {...post}/>)
+const Sidebar = ({data, selectItem, addPost}) => {
+    
+    const postList = data.map((post, i) => <SidebarPost selectItem={selectItem} key={i} {...post}/>)
 
     return (
         <nav className='sidebar'>
-            <button type="button" onClick={() => selectPost({title: 'Add Post', body: <AddPostForm />})}>Add Post</button>
+            <button type="button" onClick={() => selectItem({title: 'Add Post', content: <AddPostForm addPost={addPost}/>})}>Add Post</button>
             <ul>
                 {postList}
             </ul>

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const AddPostForm = () => {
+const AddPostForm = ({addPost}) => {
     
     const blank = {
         title: '',
@@ -11,7 +11,7 @@ const AddPostForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // addPost(name);
+        addPost(state);
         setState(blank);
     }
 

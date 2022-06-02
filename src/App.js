@@ -12,16 +12,25 @@ function App() {
 		{title: 'Blog Post 4', body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero non esse a, molestias ut quasi autem delectus sapiente culpa dignissimos architecto expedita placeat nam cum labore nulla. Saepe, hic aperiam! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos harum vel voluptate, alias, quae deleniti omnis deserunt aperiam perspiciatis commodi fuga et architecto? Odit molestiae beatae nisi laudantium sunt minus. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque aut animi ducimus sed vitae adipisci vel a dolore exercitationem recusandae odio quaerat placeat tenetur, tempore nisi sequi ipsum officia aspernatur.'},
 	]
 
-	const [selection, setSelection] = useState(DATA[0]);
+	const [state, setState] = useState({
+		posts: DATA,
+		selection: DATA[0]
+	})
 
-	const selectPost = newPost => {
-		setSelection(newPost);
+	const selectItem = selected => {
+		setState({...state, selection: selected});
+	}
+
+	const addPost = addedPost => {
+		const newList = state.posts;
+		newList.push(addedPost);
+		setState({...state, posts: newList});
 	}
   
   	return (
     	<div className="App">
-			<Sidebar data={DATA} selectPost={selectPost}/>
-			<MainPost {...selection}/>
+			<Sidebar data={state.posts} selectItem={selectItem} addPost={addPost}/>
+			<MainPost {...state.selection}/>
     	</div>
   	);
 }

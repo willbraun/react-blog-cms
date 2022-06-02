@@ -1,7 +1,7 @@
-const SidebarPost = ({title, body, selectPost}) => {
+const SidebarPost = ({title, body, selectItem}) => {
     return (
         <li className="sidebar-post">
-            <p className="side-title" onClick={() => selectPost({title, body})}>{title}</p>
+            <p className="side-title" onClick={() => selectItem({title, body})}>{title}</p>
         </li>
     )
 }
