@@ -34,11 +34,18 @@ function App() {
 		newList.splice(index, 1);
 		setState({...state, posts: newList, selection: state.posts[0]});
 	}
+
+	const editPost = (id, newTitle, newBody) => {
+		const newList = state.posts;
+		const index = newList.findIndex(post => post.id === id);
+		newList[index] = {id: id, title: newTitle, body: newBody}
+		setState({...state, posts: newList, selection: newList[index]});
+	}
   
   	return (
     	<div className="App">
 			<Sidebar state={state} selectItem={selectItem} addPost={addPost}/>
-			<MainPost {...state.selection} deletePost={deletePost}/>
+			<MainPost {...state.selection} editPost={editPost} deletePost={deletePost}/>
     	</div>
   	);
 }
