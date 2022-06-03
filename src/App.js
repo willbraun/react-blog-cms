@@ -15,17 +15,18 @@ function App() {
 	const [state, setState] = useState({
 		posts: DATA,
 		selection: DATA[0],
-		uid: 5
+		uid: 5,
+		isEditing: false
 	})
 
 	const selectItem = selected => {
-		setState({...state, selection: selected});
+		setState({...state, selection: selected, isEditing: false});
 	}
 
 	const addPost = addedPost => {
 		const newList = state.posts;
 		newList.push(addedPost);
-		setState({posts: newList, selection: addedPost, uid: state.uid + 1});
+		setState({posts: newList, selection: addedPost, uid: state.uid + 1, isEditing: false});
 	}
 
 	const deletePost = id => {
@@ -39,13 +40,17 @@ function App() {
 		const newList = state.posts;
 		const index = newList.findIndex(post => post.id === id);
 		newList[index] = {id: id, title: newTitle, body: newBody}
-		setState({...state, posts: newList, selection: newList[index]});
+		setState({...state, posts: newList, selection: newList[index], isEditing: false});
+	}
+
+	const setIsEditing = bool => {
+		setState({...state, isEditing: bool})
 	}
   
   	return (
     	<div className="App">
 			<Sidebar state={state} selectItem={selectItem} addPost={addPost}/>
-			<MainPost {...state.selection} editPost={editPost} deletePost={deletePost}/>
+			<MainPost state={state} setIsEditing={setIsEditing} editPost={editPost} deletePost={deletePost}/>
     	</div>
   	);
 }

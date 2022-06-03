@@ -1,23 +1,22 @@
 import { useState } from 'react';
 
-const MainPost = ({id, title, body, content, editPost, deletePost}) => {
+const MainPost = ({state, setIsEditing, editPost, deletePost}) => {
+    const [id, title, body, content, isEditing] = [state.selection.id, state.selection.title, state.selection.body, state.selection.content, state.isEditing]
     let pageContent, header;
 
     const [mainState, setMainState] = useState({
         newTitle: title,
         newBody: body,
-        isEditing: false,
     })
 
     const saveEdit = () => {
         editPost(id, mainState.newTitle, mainState.newBody);
-        setMainState({...mainState, isEditing: false});
     }
  
     if (id) {
         header = (
             <header>
-                <button type="button" onClick={() => setMainState({...mainState, isEditing: true})}>Edit</button>
+                <button type="button" onClick={() => setIsEditing(true)}>Edit</button>
                 <button type="button" onClick={() => deletePost(id)}>Delete</button>
             </header>
         )  
@@ -52,14 +51,14 @@ const MainPost = ({id, title, body, content, editPost, deletePost}) => {
                 <label htmlFor={`body${id}`}>Body</label>
                 <input type="text" id={`body${id}`} value={mainState.newBody} onChange={(e) => setMainState({...mainState, newBody: e.target.value})}/>
                 
-                <button onClick={() => setMainState({...mainState, isEditing: false})}>Cancel</button>
+                <button onClick={() => setIsEditing(false)}>Cancel</button>
                 <button onClick={() => saveEdit()}>Save</button>
             </div>
         </main>
     )
 
     return (
-        <>{ mainState.isEditing ? editHTML : previewHTML }</>
+        <>{ isEditing ? editHTML : previewHTML }</>
     )
 }
 
