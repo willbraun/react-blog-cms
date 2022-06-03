@@ -1,3 +1,7 @@
+* {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
 .App {
 	text-align: center;
 	display: flex;
@@ -33,7 +37,6 @@
 
 .form-row input, .form-row textarea {
 	width: 100%;
-	font-family: Arial, Helvetica, sans-serif;
 }
 
 .form-row #body {
@@ -65,7 +68,7 @@ ul {
 	padding-left: 0;
 }
 
-.post-wrapper {
+.post-wrapper, .edit-post-wrapper {
 	margin: auto;
 	max-width: 80%;
 }
@@ -84,13 +87,38 @@ main header button {
 	margin-left: 10px;
 }
 
-.main-title {
+.main-title, #edit-title {
 	font-size: 2rem;
 	font-weight: 700;
 }
 
-.main-body {
+.main-body, #edit-body {
 	font-size: 1.5rem;
+	margin: 30px 0;
+}
+
+.edit-post-wrapper {
+	display: flex;
+	flex-direction: column;
+	margin-top: 80px;
+}
+
+#edit-title {
+	text-align: center;
+}
+
+#edit-body {
+	resize: vertical;
+	height: 50vh;
+}
+
+.edit-buttons {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.edit-buttons button {
+	margin-left: 20px;
 }
 
 button:hover {

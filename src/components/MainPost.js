@@ -44,15 +44,17 @@ const MainPost = ({state, setIsEditing, editPost, deletePost}) => {
 
     const editHTML = (
         <main className="main-post">
-            <div className="post-wrapper">
-                <label htmlFor={`title${id}`}>Title</label>
-                <input type="text" id={`title${id}`} value={mainState.newTitle} onChange={(e) => setMainState({...mainState, newTitle: e.target.value})}/>
+            <div className="edit-post-wrapper">
+                <label htmlFor='edit-title'></label>
+                <input type="text" id='edit-title' value={mainState.newTitle} onChange={(e) => setMainState({...mainState, newTitle: e.target.value})}/>
                 
-                <label htmlFor={`body${id}`}>Body</label>
-                <input type="text" id={`body${id}`} value={mainState.newBody} onChange={(e) => setMainState({...mainState, newBody: e.target.value})}/>
+                <label htmlFor='edit-body'></label>
+                <textarea id='edit-body' onChange={(e) => setMainState({...mainState, newBody: e.target.value})}>{mainState.newBody}</textarea>
                 
-                <button onClick={() => setIsEditing(false)}>Cancel</button>
-                <button onClick={() => saveEdit()}>Save</button>
+                <div className='edit-buttons'>
+                    <button onClick={() => setIsEditing(false)}>Cancel</button>
+                    <button onClick={() => saveEdit()}>Save</button>
+                </div>
             </div>
         </main>
     )
