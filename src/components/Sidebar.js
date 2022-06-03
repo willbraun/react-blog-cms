@@ -7,7 +7,7 @@ const Sidebar = ({state, selectItem, addPost}) => {
 
     return (
         <nav className='sidebar'>
-            <button type="button" onClick={() => selectItem({title: 'Add Post', content: <AddPostForm state={state} addPost={addPost}/>})}>Add Post</button>
+            <button type="button" id='add-post' onClick={() => selectItem({title: 'Add Post', content: <AddPostForm state={state} addPost={addPost}/>})}>Add Post</button>
             <ul>
                 {postList}
             </ul>

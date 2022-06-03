@@ -19,6 +19,8 @@ function App() {
 		isEditing: false
 	})
 
+	const noPosts = {id: 0, title: 'No blog posts. Add one!', body: ''};
+
 	const selectItem = selected => {
 		setState({...state, selection: selected, isEditing: false});
 	}
@@ -33,7 +35,7 @@ function App() {
 		const newList = state.posts;
 		const index = newList.findIndex(post => post.id === id);
 		newList.splice(index, 1);
-		setState({...state, posts: newList, selection: state.posts[0]});
+		setState({...state, posts: newList, selection: state.posts[0] ? state.posts[0] : noPosts});
 	}
 
 	const editPost = (id, newTitle, newBody) => {

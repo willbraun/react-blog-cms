@@ -28,7 +28,7 @@ const AddPostForm = ({state, addPost}) => {
                     <textarea id="body" required onChange={(e) => setFormState({...formState, body: e.target.value})}></textarea>
                 </div>
     
-                <button type="submit">Add</button>
+                <button type="submit" id='add'>Add</button>
             </form>
         </div>
     );
