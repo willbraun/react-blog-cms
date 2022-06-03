@@ -1,18 +1,19 @@
 import { useState } from 'react';
 
-const AddPostForm = ({addPost}) => {
+const AddPostForm = ({state, addPost}) => {
     
-    const blank = {
+    const start = {
+        id: state.uid,
         title: '',
         body: '',
     }
 
-    const [state, setState] = useState(blank);
+    const [formState, setFormState] = useState(start);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        addPost(state);
-        setState(blank);
+        addPost(formState);
+        setFormState({...start, id: state.uid});
     }
 
     return (
@@ -20,11 +21,11 @@ const AddPostForm = ({addPost}) => {
             <form className="add-post-form" onSubmit={handleSubmit}>
                 <div className='form-row'>
                     <label htmlFor="title">Title</label>
-                    <input type="text" id="title" required onChange={(e) => setState({...state, title: e.target.value})}/>
+                    <input type="text" id="title" required onChange={(e) => setFormState({...formState, title: e.target.value})}/>
                 </div>
                 <div className='form-row'>
                     <label htmlFor="body">Body</label>
-                    <textarea id="body" required onChange={(e) => setState({...state, body: e.target.value})}></textarea>
+                    <textarea id="body" required onChange={(e) => setFormState({...formState, body: e.target.value})}></textarea>
                 </div>
     
                 <button type="submit">Add</button>

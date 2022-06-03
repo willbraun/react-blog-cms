@@ -74,6 +74,16 @@ main {
 	width: 100%;
 }
 
+main header {
+	display: flex;
+	justify-content: flex-end;
+	padding: 20px 20px 0 0;
+}
+
+main header button {
+	margin-left: 10px;
+}
+
 .main-title {
 	font-size: 2rem;
 	font-weight: 700;
@@ -81,4 +91,8 @@ main {
 
 .main-body {
 	font-size: 1.5rem;
+}
+
+button:hover {
+	filter: brightness(90%);
 }
