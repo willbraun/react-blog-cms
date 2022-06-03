@@ -30,9 +30,9 @@ function App() {
 
 	const deletePost = id => {
 		const newList = state.posts;
-		const index = newList.findIndex(post => post === post.id);
+		const index = newList.findIndex(post => post.id === id);
 		newList.splice(index, 1);
-		setState({...state, posts: newList});
+		setState({...state, posts: newList, selection: state.posts[0]});
 	}
   
   	return (

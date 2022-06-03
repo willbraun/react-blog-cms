@@ -1,4 +1,4 @@
-const MainPost = ({title, body, content, deletePost}) => {
+const MainPost = ({title, body, content, id, deletePost}) => {
     let pageContent;
     if (content) {
         pageContent = <div className="main-content">{content}</div>
@@ -10,8 +10,8 @@ const MainPost = ({title, body, content, deletePost}) => {
     return (
         <main className="main-post">
             <header>
-                <button type="button" onClick={() => deletePost}>Edit</button>
-                <button type="button">Delete</button>
+                <button type="button">Edit</button>
+                <button type="button" onClick={() => deletePost(id)}>Delete</button>
             </header>
             <div className="post-wrapper">
                 <p className="main-title">{title}</p>
